@@ -14,5 +14,3 @@ configCreator(path.resolve(directory)).catch((err) => {
 	console.error(`[@noma/typescript::configCreator::catch] Ran into an error: `, JSON.stringify(err));
 	throw Error(err);
 });
-
-// TODO: Add start package script to automatically create types, tsc, prettier && noma ., and pass any arguments to noma
