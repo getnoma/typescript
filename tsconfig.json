@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "baseUrl": "./src",
+      "allowSyntheticDefaultImports": true,
+      "isolatedModules": true,
+      "incremental": true,
+      "module": "ES6",
+      "declaration": true,
+      "target": "ESNext",
+      "sourceMap": true,
+      "noEmit": false,
+      "outDir": "bin",
+      "rootDir": "src",
+      "strict": true,
+      "stripInternal": true,
+      "moduleResolution": "Node",
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "esModuleInterop": true,
+      "skipDefaultLibCheck": true,
+      "skipLibCheck": true,
+    },
+  }

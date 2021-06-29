@@ -1,0 +1,30 @@
+{
+  "name": "@noma/typescript",
+  "version": "0.0.1",
+  "description": "Generate types from noma config & noma plugins",
+  "scripts": {
+    "dev": "npm run tsc && npm start",
+    "start": "node bin/index.js",
+    "tsc": "tsc"
+  },
+  "bin": {
+    "noma-tsc": "bin/index.js"
+  },
+  "keywords": [
+    "noma",
+    "typescript",
+    "types"
+  ],
+  "type": "module",
+  "author": "Chris Rosendorf & William Pfaffe",
+  "license": "ISC",
+  "dependencies": {
+    "@apidevtools/json-schema-ref-parser": "^9.0.9"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.4",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "4.3.2"
+  }
+}
