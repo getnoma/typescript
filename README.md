@@ -47,6 +47,11 @@ const main: IMainFunction = ({ config }) => {
 export default main;
 ```
 
+## Plugin Creation
+___
+When creating a plugins' Typescript defition (.d.ts) file, please add the @types module to the dependencies, instead of devDependencies.  
+This ensures the types are installed without the need to install them locally when using the noma plugins and services.
+
 ## Notes
 ___
 The `'noma-tsc'` command should be executed every time a config file has been changed, every time a plugin has been updated, or when a new plugin is installed.  
