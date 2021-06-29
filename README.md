@@ -49,7 +49,7 @@ export default main;
 
 ## Plugin Creation
 ___
-When creating a plugins' Typescript defition (.d.ts) file, please add the @types module to the dependencies, instead of devDependencies.  
+When creating a plugins' Typescript defition (.d.ts) file, please add the @types module to the package.json dependencies, instead of devDependencies.  
 This ensures the types are installed without the need to install them locally when using the noma plugins and services.
 
 ## Notes
