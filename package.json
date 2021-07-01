@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Generate types from noma config & noma plugins",
   "scripts": {
+    "clean": "tsc --build --clean",
     "dev": "npm run tsc && npm start",
     "start": "node bin/index.js",
     "tsc": "tsc"
@@ -19,7 +20,8 @@
   "author": "Chris Rosendorf & William Pfaffe",
   "license": "ISC",
   "dependencies": {
-    "@apidevtools/json-schema-ref-parser": "^9.0.9"
+    "@apidevtools/json-schema-ref-parser": "^9.0.9",
+    "slash": "4.0.0"
   },
   "devDependencies": {
     "@types/node": "^15.12.4",

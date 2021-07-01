@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import slash from "slash";
 const NOMA_PLUGIN_REGEX = /^((@noma\/(plugin-[a-z0-9-_.]+))|(@[a-z0-9-_.]+\/noma-plugin-[a-z0-9-_.]+)|(noma-plugin-[a-z0-9-_.]+))$/;
 function resolvePackageDependencies(projectDirectory) {
     const packageJsonPath = path.resolve(projectDirectory, `package.json`);
@@ -12,10 +13,10 @@ export async function pluginLoader(projectDirectory) {
     /// Extract the name, node_modules file path and full file path for each plugin.
     const mapped = await Promise.all(nomaPlugins.map(async (pluginName) => {
         const shortHandName = pluginName.replace(/^@[a-z0-9-_.]+\/(?:noma-)?plugin-([a-z0-9-_.]+)$/, "$1");
-        const pluginDefinition = `${projectDirectory}\\node_modules\\${pluginName}\\src\\index`;
-        const moduleImportPath = pluginDefinition.replace(/.*node_modules\\/, ``).replace(/\\/g, `/`);
+        const pluginDefinition = slash(`${projectDirectory}\\node_modules\\${pluginName}\\src\\index`);
+        const moduleImportPath = slash(pluginDefinition.replace(/.*node_modules\\/, ``));
         return {
-            path: moduleImportPath,
+            importPath: moduleImportPath,
             fullPath: pluginDefinition,
             pluginName,
             shortHandName,
@@ -23,11 +24,11 @@ export async function pluginLoader(projectDirectory) {
     }));
     /// Create the Typescript declaration (.d.ts) type and export the file path too.
     mapped.sort((current, next) => current.pluginName.localeCompare(next.pluginName));
-    return mapped.map(({ path, shortHandName, fullPath: filePath }, i) => {
+    return mapped.map(({ importPath, shortHandName, fullPath: filePath }, i) => {
         const newLine = i === mapped.length - 1 ? `` : `\n`;
         return {
             name: shortHandName,
-            typeDeclaration: `type ${shortHandName} = import("${path}").default${newLine}`,
+            typeDeclaration: `type ${shortHandName} = import("${importPath}").default${newLine}`,
             filePath: `${filePath}.d.ts`,
         };
     });
