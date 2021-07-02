@@ -30,7 +30,7 @@ export async function configCreator(projectDirectory: string) {
 export interface IMainFunction {
 	(nomaConfig: { config: INomaConfig; ${pluginParameters} }): void;
 }
-						`;
+`;
 
 	const stringifiedConfig = Object.keys(nomaConfig)
 		.map((key) => {
