@@ -3,12 +3,10 @@ import path from "path";
 import { configCreator } from "./helpers/generator.js";
 const directory = process.argv[2];
 if (directory === undefined || directory === null) {
-    console.error(`[ERR]: You must provide a project directory argument.`);
-    process.exit(1);
+    console.warn(`[WARNING]: Project directory argument is not set! noma-tsc will default to ./`);
 }
-configCreator(path.resolve(directory)).catch((err) => {
+configCreator(path.resolve(directory ?? `.`)).catch((err) => {
     console.error(`[@noma/typescript::configCreator::catch] Ran into an error: `, JSON.stringify(err));
     throw Error(err);
 });
-// TODO: Add start package script to automatically create types, tsc, prettier && noma ., and pass any arguments to noma
 //# sourceMappingURL=index.js.map
