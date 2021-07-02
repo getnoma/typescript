@@ -27,9 +27,9 @@ export async function configCreator(projectDirectory: string) {
 
 	/// Create the Typescript declaration (.d.ts) file data.
 	const mainFunction = `
-						export interface IMainFunction {
-							(nomaConfig: { config: INomaConfig; ${pluginParameters} }): void;
-						}
+export interface IMainFunction {
+	(nomaConfig: { config: INomaConfig; ${pluginParameters} }): void;
+}
 						`;
 
 	const stringifiedConfig = Object.keys(nomaConfig)
